@@ -3,13 +3,13 @@
 #include <stdlib.h>
 /**
  * struct listint_s - linked list
- * @num: number
- * @nxt: point to the next nodeof the linked list
+ * @n: number
+ * @next: point to the next nodeof the linked list
  */
 typedef struct listint_s
 {
-	int num;
-	struct listint_s*nxt;
+	int n;
+	struct listint_s*next;
 }
 listint_t;
 size_t print_listint(const listint_t *h);
