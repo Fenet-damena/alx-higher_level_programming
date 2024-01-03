@@ -3,6 +3,8 @@ import random
 number = random.randint(-10000, 1000)
 if number < 0:
     last = number % -10
+elif number == 0:
+    last = number % 10 
 else:
     last = number % 10
 if last > 5:
