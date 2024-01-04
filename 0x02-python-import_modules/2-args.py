@@ -9,5 +9,5 @@ if __name__ == "__main__":
   else:
         print("{} arguments:".format(leng))
   for k in range(leng):
-        print("{}: {}".format(k + 1, argv[k + 1]))
+        print("{}: {:s}".format(k + 1, argv[k + 1]))
   
