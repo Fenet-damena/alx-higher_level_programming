@@ -1,0 +1,38 @@
+add_integer Function Documentation:
+
+Description:
+This function adds two integers together and returns the result. If one or both of the inputs are floats, they are first casted to integers before performing the addition.
+
+Prototype:
+def add_integer(a, b=98)
+
+Parameters:
+- a: An integer or float representing the first number to be added.
+- b: An integer or float representing the second number to be added. (default: 98)
+
+Return:
+An integer representing the sum of the two input numbers.
+
+Exceptions:
+- If `a` is not an integer or float, a TypeError exception is raised with the error message "a must be an integer or b must be an integer."
+- If `b` is not an integer or float, a TypeError exception is raised with the error message "a must be an integer or b must be an integer."
+
+Note:
+- The function does not allow importing any modules.
+
+Example Usage:
+print(add_integer(1, 2))           # Output: 3
+print(add_integer(100, -2))        # Output: 98
+print(add_integer(2))              # Output: 100
+print(add_integer(100.3, -2))      # Output: 98
+
+try:
+    print(add_integer(4, "School")) # Output: TypeError: b must be an integer
+except Exception as e:
+    print(e)
+
+try:
+    print(add_integer(None))        # Output: TypeError: a must be an integer
+except Exception as e:
+    print(e)
+
