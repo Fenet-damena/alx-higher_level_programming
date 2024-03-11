@@ -1,0 +1,29 @@
+def test_add_integer():
+    """
+    Test function for add_integer.
+
+    Raises:
+    AssertionError: If any of the test cases fail.
+    """
+
+    # Test case 1: Adding two positive integers
+    result = add_integer(5, 3)
+    assert result == 8, "Test case 1 failed"
+
+    # Test case 2: Adding two positive floats
+    result = add_integer(2.5, 1.5)
+    assert result == 3, "Test case 2 failed"
+
+    # Test case 3: Adding an integer and the default value
+    result = add_integer(4)
+    assert result == 102, "Test case 3 failed"
+
+    # Test case 4: Adding an integer and a string
+    try:
+        add_integer(10, '2')
+    except TypeError:
+        pass
+    else:
+        assert False, "Test case 4 failed"
+
+    print("All test cases passed!")
