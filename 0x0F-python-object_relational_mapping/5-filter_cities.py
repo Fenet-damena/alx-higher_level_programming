@@ -1,28 +1,28 @@
 #!/usr/bin/python3
-"""Takes in the name of a state as an argument and
-lists all cities that state,
-script take 4 arguments(SQL injection free
 """
-if __name__ == "__main__":
-    import MySQLdb
-    import sys
-    conn = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=sys.argv[1],
-        passwd=sys.argv[2],
-        db=sys.argv[3],
-        charset="utf8")
-    cur = conn.cursor()
-    cur.execute(
-        "SELECT cities.name FROM cities JOIN states ON \
-cities.state_id = states.id WHERE states.name = %s",
-        (sys.argv[4],
-         ))
-    query_rows = cur.fetchall()
-    my_list = []
-    for row in query_rows:
-        my_list.append(",".join(str(x) for x in row))
-    print(*my_list, sep=", ")
+Script that takes in the name of a state as an argument and lists
+all cities of that state, using the database
+"""
+import MySQLdb
+from sys import argv
+
+# The code should not be executed when imported
+if __name__ == '__main__':
+    # make a connection to the database
+    db = MySQLdb.connect(host="localhost", port=3306, user=argv[1],
+                         passwd=argv[2], db=argv[3])
+
+    cur = db.cursor()
+    cur.execute("SELECT cities.id, cities.name FROM cities\
+                INNER JOIN states ON cities.state_id = states.id\
+                WHERE states.name = %s", [argv[4]])
+
+    rows = cur.fetchall()
+    j = []
+    for i in rows:
+        j.append(i[1])
+    print(", ".join(j))
+
+    # Clean up process
     cur.close()
-    conn.close()
+    db.close()
